@@ -1,0 +1,31 @@
+{
+  "id": "full_article_grading_polisher_5",
+  "pluginKey": "@official-plugins/ai-text-generate",
+  "pluginVersion": "1.0.21",
+  "name": "整篇批改润色器",
+  "description": "对用户根据句式骨架套用新主题写的整篇文章进行整体批改、打分，并给出润色版全文，输出为markdown格式，包含总体评价、分数、逐句批改要点和润色版全文",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "original_article": {
+        "type": "string",
+        "description": "用户根据句式骨架套用新主题撰写的整篇原始文章内容"
+      }
+    },
+    "required": [
+      "original_article"
+    ]
+  },
+  "formValue": {
+    "modelID": "2015",
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "prompt": "你是一位专业的英文写作指导专家，擅长对学生作文进行精细化批改、客观评分和专业润色。\n\n请对以下用户根据句式骨架套用新主题撰写的整篇英文文章进行完整批改：\n{{input.original_article}}\n\n批改要求：\n1. 输出格式严格采用markdown，包含以下四个部分：\n   # 总体评价\n   用1-2段话客观评价文章的整体优点、存在的主要问题和改进方向\n   \n   # 综合评分\n   采用百分制，给出具体分数，并简单说明扣分点\n   \n   # 逐句批改要点\n   对每句话存在的问题逐一列出，包含语法错误、用词不当、句式问题、逻辑问题等，并说明修改理由\n   \n   # 润色版全文\n   提供完整的润色后的文章，确保语言地道、表达流畅、逻辑清晰，保留原文核心思想\n\n2. 批改标准参考专业英语写作评分规范，重点关注语法准确性、用词恰当性、句式多样性、逻辑连贯性和主题契合度\n3. 批改意见具体明确，避免空泛评价，让用户清晰知道问题所在和改进方法\n4. 润色后的文章保持原意，同时在表达上更加自然地道，符合英语母语使用者的表达习惯"
+  },
+  "createdAt": 1792943879556,
+  "updatedAt": 1792943879556,
+  "createdBy": 7576031156701776825
+}

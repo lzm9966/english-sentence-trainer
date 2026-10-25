@@ -1,0 +1,48 @@
+{
+  "id": "english_essay_sentence_template_extractor_1",
+  "pluginKey": "@official-plugins/ai-text-to-json",
+  "pluginVersion": "1.0.26",
+  "name": "范文句式提取器",
+  "description": "逐句分析英语范文，提取每句的固定句式骨架，标记替换空位，识别生词并给出中文释义，同时标注语法点标签。",
+  "icon": "",
+  "paramsSchema": {
+    "properties": {
+      "english_essay_content": {
+        "type": "string",
+        "description": "待分析的英语范文全文内容"
+      }
+    },
+    "required": [
+      "english_essay_content"
+    ],
+    "type": "object"
+  },
+  "formValue": {
+    "modelID": "2015",
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "prompt": "你是一位专业的英语教学与语言分析专家，擅长从英语范文中提取标准句式结构、识别重点词汇和语法点。\n\n请对以下英语范文进行逐句深度分析：\n{{input.english_essay_content}}\n\n分析要求：\n1. 逐句处理每一个句子，为每个句子生成唯一标识id\n2. 提取句式骨架：剔掉句子中的主题词、具体名词、具体状语等可替换内容，保留固定句式结构，空位用___表示\n3. 标记每个空位的详细信息，包括位置索引、原始内容、语法角色\n4. 识别句子中的生词（大学英语四级以上难度词汇），标注词性和中文释义\n5. 为每个句子标注对应的语法点标签\n6. 统计总句子数量\n7. 汇总全文所有生词，生成统一的生词表，避免重复\n\n输出必须严格符合指定的JSON结构，不得遗漏任何字段。",
+    "jsonStructure": [
+      {
+        "paramDescription": "句子句式模板列表，每个元素为一个句子的分析结果，items schema: {id: string(句子唯一标识), originalSentence: string(原文句子), skeleton: string(句式骨架，空位用___表示), blanks: Array(空位信息列表，items schema: {id: string(空位唯一标识), index: Number(空位在句子中的位置索引), originalContent: string(空位原始内容), grammaticalRole: string(空位语法角色)}), vocabulary: Array(句子生词列表，items schema: {word: string(单词), pos: string(词性), meaning: string(中文释义)}), grammarTags: Array(语法点标签字符串数组)}",
+        "paramType": "Array",
+        "name": "sentenceTemplates"
+      },
+      {
+        "name": "totalSentences",
+        "paramDescription": "范文总句子数量",
+        "paramType": "Number"
+      },
+      {
+        "name": "summaryVocabulary",
+        "paramDescription": "全文汇总生词表，无重复，items schema: {word: string(单词), pos: string(词性), meaning: string(中文释义)}",
+        "paramType": "Array"
+      }
+    ]
+  },
+  "createdAt": 1792943802398,
+  "updatedAt": 1792943802398,
+  "createdBy": 7576031156701776825
+}

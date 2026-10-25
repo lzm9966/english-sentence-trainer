@@ -1,0 +1,36 @@
+{
+  "id": "word_definition_generator_6",
+  "pluginKey": "@official-plugins/ai-text-generate",
+  "pluginVersion": "1.0.21",
+  "name": "单词释义生成器",
+  "description": "对用户点击的英文单词，结合上下文句子，生成该单词在本句中的词性和中文释义，以及相关常用搭配和例句，适合点词查义功能使用，输出为简洁的markdown格式。",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "target_word": {
+        "type": "string",
+        "description": "需要查询释义的目标英文单词"
+      },
+      "context_sentence": {
+        "type": "string",
+        "description": "目标单词所在的上下文句子"
+      }
+    },
+    "required": [
+      "target_word",
+      "context_sentence"
+    ]
+  },
+  "formValue": {
+    "prompt": "你是一位专业的英语词典专家，擅长结合上下文解释英文单词的具体含义。请根据以下提供的目标单词和上下文句子，生成该单词的详细释义：\n\n目标单词：{{input.target_word}}\n上下文句子：{{input.context_sentence}}\n\n请严格按照以下markdown格式输出：\n### {{input.target_word}}\n**词性**：[该单词在当前句子中的词性，如n./v./adj./adv.等]\n**中文释义**：[该单词在当前句子中的具体中文含义，要结合上下文语境，不要直接罗列所有含义]\n**常用搭配**：\n- [搭配1]：[释义]\n- [搭配2]：[释义]\n- [搭配3]：[释义]\n（至少提供3个常用搭配）\n**例句**：\n1. [英文例句1]\n   中文翻译：[对应中文翻译]\n2. [英文例句2]\n   中文翻译：[对应中文翻译]\n（至少提供2个相关例句，例句要典型实用）\n\n输出要求：\n1. 释义必须准确贴合上下文语境，不要生搬硬套词典释义\n2. 搭配和例句要与目标单词的当前词性和含义相关\n3. 内容简洁明了，适合快速查阅\n4. 严格遵循上述markdown格式，不要添加额外内容",
+    "modelID": "2015",
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    }
+  },
+  "createdAt": 1792943898703,
+  "updatedAt": 1792943898703,
+  "createdBy": 7576031156701776825
+}

@@ -1,0 +1,31 @@
+{
+  "id": "grammar_explanation_generator_4",
+  "pluginKey": "@official-plugins/ai-text-generate",
+  "pluginVersion": "1.0.21",
+  "name": "语法讲解生成器",
+  "description": "面向英语基础一般的学习者，用通俗易懂的语言讲解句式涉及的语法点，输出为markdown格式",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "sentence_content": {
+        "description": "需要讲解语法的英语句子内容",
+        "type": "string"
+      }
+    },
+    "required": [
+      "sentence_content"
+    ]
+  },
+  "formValue": {
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "prompt": "你是一位经验丰富的英语教学专家，擅长用通俗易懂的方式讲解语法知识，面向英语基础一般的学习者。\n\n请对以下英语句子进行语法讲解：\n{{input.sentence_content}}\n\n讲解要求：\n1. 整体结构：先给出句子的中文翻译，再分点讲解语法点\n2. 语法点覆盖：重点讲解涉及的从句类型、虚拟语气用法、固定搭配、时态特点等核心语法点\n3. 语言风格：避免使用晦涩的专业术语，多用生活化的类比和举例，让初学者容易理解\n4. 实用建议：每个语法点讲解后，补充1-2个简单的同类例句帮助巩固\n5. 输出格式：使用markdown格式，层级清晰，重点内容可以用加粗标注\n\n输出结构参考：\n### 原句\n> [原句内容]\n\n### 中文翻译\n> [翻译内容]\n\n### 核心语法点讲解\n1. **[语法点名称]**\n   - 讲解内容：用大白话解释这个语法点的用法\n   - 同类例句：[简单易懂的例句] + 中文翻译\n\n2. **[语法点名称]**\n   - 讲解内容：...\n   - 同类例句：...\n\n### 总结\n简单总结这个句子的语法特点和学习要点",
+    "modelID": "2015"
+  },
+  "createdAt": 1792943858016,
+  "updatedAt": 1792943858016,
+  "createdBy": 7576031156701776825
+}
